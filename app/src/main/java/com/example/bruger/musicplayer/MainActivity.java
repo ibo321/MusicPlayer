@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         //get listView
         songList = (ListView) findViewById(R.id.song_ListView);
 
-        //songs
         arrayList = new ArrayList<>();
         arrayList.add(new Song("- Formation","Beyoncé",R.raw.beyonce_formation));
         arrayList.add(new Song("- Hope You Do","Chris Brown",R.raw.chrisbrown_hopeyoudo));
