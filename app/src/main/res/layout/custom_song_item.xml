@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/music_png"
+        android:background="@drawable/music"
+        android:layout_width="45dp"
+        android:layout_height="45dp" />
+
+    <TextView
+        android:id="@+id/singer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#b517b7"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/music_png"
+        android:text="Singer"/>
+
+    <TextView
+        android:id="@+id/songName_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#11ca6b"
+        android:textSize="15sp"
+        android:layout_toRightOf="@id/music_png"
+        android:text="Song name"
+        android:layout_below="@+id/singer_text"/>
+
+    <ImageView
+        android:id="@+id/play_png"
+        android:src="@drawable/play"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@id/stop_png"
+        android:layout_marginTop="7dp"/>
+
+    <ImageView
+        android:id="@+id/stop_png"
+        android:src="@drawable/stop"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="7dp"/>
+
+</RelativeLayout>
