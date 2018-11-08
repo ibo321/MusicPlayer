@@ -23,7 +23,7 @@ public class CustomSongAdapter extends BaseAdapter {
     private int layout;
     private ArrayList<Song> arrayList;
     private MediaPlayer mediaPlayer;
-    private Boolean flag = true;
+    private Boolean clickedPlaying = true;
 
     @Override
     public int getCount() {
@@ -40,7 +40,7 @@ public class CustomSongAdapter extends BaseAdapter {
         return 0;
     }
 
-    private class ViewHolder{
+    private class ViewHolder {
         TextView txtName, txtSinger;
         ImageView playB, stopB;
     }
@@ -48,7 +48,7 @@ public class CustomSongAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
-        if (convertView == null){
+        if (convertView == null) {
             viewHolder = new ViewHolder();
 
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -68,15 +68,19 @@ public class CustomSongAdapter extends BaseAdapter {
         viewHolder.txtName.setText(song.getName());
         viewHolder.txtSinger.setText(song.getSinger());
 
+
         // play music
         viewHolder.playB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(flag){
+                if (clickedPlaying) {
+                    //get song you clicked on
                     mediaPlayer = MediaPlayer.create(context, song.getSong());
-                    flag = false;
+
+                    //set boolean to false so it can get ANOTHER song when clicked
+                    clickedPlaying = false;
                 }
-                if(mediaPlayer.isPlaying()) {
+                if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     viewHolder.playB.setImageResource(R.drawable.play);
                 } else {
@@ -90,10 +94,11 @@ public class CustomSongAdapter extends BaseAdapter {
         viewHolder.stopB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!flag) {
+                if (!clickedPlaying) {
                     mediaPlayer.stop();
                     mediaPlayer.release();
-                    flag = true;
+
+                    clickedPlaying = true;
                 }
                 viewHolder.playB.setImageResource(R.drawable.play);
             }
